@@ -1,0 +1,115 @@
+{
+    "layer": "top",
+    "position": "left",
+    "modules-center": ["hyprland/workspaces"],
+    // "modules-center": ["sway/workspaces"],
+    "modules-right": ["network", "battery", "pulseaudio", "clock"],
+    "modules-left": ["tray", "custom/power"],
+    "width": 35,
+    // Modules configuration
+	"hyprland/workspaces": {
+	// "sway/workspaces": {
+    "persistent_workspaces": {
+        "1": ["eDP-1", "HDMI-A-1"],
+        "2": ["eDP-1", "HDMI-A-1"],
+        "3": ["eDP-1", "HDMI-A-1"],
+        "4": ["eDP-1", "HDMI-A-1"]
+    },
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace r+1",
+    "on-scroll-down": "hyprctl dispatch workspace r-1",
+    // "enable-bar-scroll": true,
+		"format": "{name}",
+    "format-icons": {
+        "default": "",
+        "urgent": "",
+        "active": ">"
+    }
+     },
+	"clock": {
+    "on-click": "korganizer",
+		"format": "<span foreground='#C6AAE8'>\n</span>{:%H\n%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+                }
+      }
+	},
+	"battery": {
+    "on-scroll-up": "brightnessctl s 2%+",
+    "on-scroll-down": "brightnessctl s 2%-",
+    "scroll-step": 5,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        	},
+		    "format": "<span foreground='#B1E3AD'>{icon}</span>",
+		    "format-warning": "<span size='13000' foreground='#B1E3AD'>{icon}</span>",
+		    "format-critical": "<span size='13000' foreground='#E38C8F'>{icon}</span>",
+		    "format-charging": "<span size='13000' foreground='#B1E3AD'>  </span>",
+		    "format-plugged": "<span size='13000' foreground='#B1E3AD'>  </span>",
+		    "format-alt": "<span size='13000' foreground='#B1E3AD'>{icon}</span> {time}",
+		    "format-full": "<span size='13000' foreground='#B1E3AD'>  </span>",
+        	"format-icons": ["", "", "", "", ""],
+            "tooltip-format": "Battery remaining: {capacity}%"
+	},
+	"network": {
+        "on-click": "konsole -e nmtui",
+        "format-wifi": "<span size='13000' foreground='#F2CECF'>  </span>",
+        "format-ethernet": "<span size='13000' foreground='#F2CECF'> 󰈀 </span>",
+        "format-linked": "",
+        "format-disconnected": "<span size='13000' foreground='#F2CECF'>  </span>",
+		"tooltip-format-ethernet": "{ifname}",
+		"tooltip-format-wifi": "{essid} {signalStrength}%"
+	},
+	"pulseaudio": {
+     "tooltip-format" : "Volume: {volume}%",
+     "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+",
+     "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+     "scroll-step": 5,
+     "on-click": "pavucontrol",
+     "format": "<span size='13000' foreground='#EBDDAA'>{icon}</span>",
+        "format-muted": "<span size='14000' foreground='#EBDDAA'>  </span>",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        }
+      },
+        "tray": {
+          "spacing": 5,
+          "icon-size": 16
+        },
+        "hyprland/window": {
+          "format": " {}",
+          "separate-outputs": true,
+          "rewrite": {
+            "geordan@archlinux:(.*)": "$1 ",
+            "(.*) — Mozilla Firefox": "$1 󰈹",
+            "(.*)Mozilla Firefox": "Firefox 󰈹",
+            "(.*) - Visual Studio Code": "$1 󰨞",
+            "(.*)Visual Studio Code": "Code 󰨞",
+            "(.*) — Dolphin": "$1 󰉋",
+            "^(nvim).*": ""
+          },
+          "max-length": 40
+        },
+        "custom/power": {
+            "format": "",
+            "on-click": "~/.bin/power"
+          }
+}
