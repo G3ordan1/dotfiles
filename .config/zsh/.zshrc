@@ -28,7 +28,7 @@ options
 keybinds
 EOF
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
 eval $(starship init zsh)
 
