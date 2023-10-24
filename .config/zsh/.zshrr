@@ -1,2 +1,0 @@
-export PATH="/home/geordan/.local/share/fnm:$PATH"
-eval "`fnm env`"

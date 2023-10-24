@@ -1,10 +1,3 @@
-## ░▀▀█░█▀▀░█░█░█▀▄░█▀▀
-## ░▄▀░░▀▀█░█▀█░█▀▄░█░░
-## ░▀▀▀░▀▀▀░▀░▀░▀░▀░▀▀▀
-##
-## rxyhn's Z-Shell configuration
-## https://github.com/rxyhn
-
 # check TTY to run Hyprland or Plasma
 
 # if [[ "$(tty)" == "/dev/tty1" ]]
@@ -15,36 +8,37 @@
 #   then startx 2>&1 > /dev/null;
 # fi
 
-alias vim="nvim"
-alias r="radian"
-alias py="ipython"
-export PATH=$HOME/.bin:$PATH
-export EDITOR="nvim"
-export PATH=/home/geordan/.local/bin:$PATH
-alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
-alias vc="protonvpn-cli c -f"
-alias vd="protonvpn-cli d"
-alias plz="sudo"
-alias yeet="sudo pacman -Rns"
-alias yay="paru"
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(git zsh-autosuggestions history-substring-search zsh-syntax-highlighting)
 
-# fnm
-export PATH="/home/geordan/.local/share/fnm:$PATH"
-eval "`fnm env`"
+function cd() {
+	builtin cd "$@" && command ls --group-directories-first --color=auto -F
+}
+
+ZSH_THEME="robbyrussell"
 
 while read file
 do 
   source "$ZDOTDIR/$file.zsh"
 done <<-EOF
-theme
 env
 aliases
-utility
 options
-plugins
 keybinds
-prompt
+EOF
+
+source $ZSH/oh-my-zsh.sh
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/starship.toml
+eval $(starship init zsh)
+
+while read file
+do 
+  source "$HOME/.oh-my-zsh/custom/plugins/$file/$file.zsh"
+done <<-EOF
+zsh-syntax-highlighting
+zsh-history-substring-search
+zsh-autosuggestions
 EOF
 
 # vim:ft=zsh:nowrap

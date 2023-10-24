@@ -2,15 +2,8 @@
 ## PATH & ENV Var
 ##
 
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-export PATH="$HOME/.scripts:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export GPG_TTY="${TTY:-$(tty)}"
-
 export XCURSOR_THEME=Bibata-Modern-Amber
-export SUDO_PROMPT="passwd: "
+export SUDO_PROMPT="Pwd la kiete? "
 export TERMINAL="kitty"
 export BROWSER="microsoft-edge-stable"
 export VISUAL="nvim"
