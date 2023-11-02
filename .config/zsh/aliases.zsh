@@ -2,6 +2,7 @@
 ## Aliases
 ##
 
+alias dark_scheme="gsettings set org.gnome.desktop.interface color-scheme prefer-light;gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
 alias vim="nvim"
 alias r="radian"
 alias py="ipython"
@@ -29,7 +30,7 @@ alias parucheck="paru -Gp"
 alias cleanpac='sudo pacman -Rns $(pacman -Qtdq); paru -c'
 alias installed="grep -i installed /var/log/pacman.log"
 alias ls="exa --color=auto --icons"
-alias l="ls -l"
+alias ll="ls -la"
 alias la="ls -a"
 alias grep='grep --color=auto'
 alias mv='mv -v'
