@@ -10,6 +10,7 @@
 
 # eval $(thefuck --alias)
 export ZSH="$HOME/.oh-my-zsh"
+alias met="yay -S"
 plugins=(git zsh-autosuggestions history-substring-search zsh-syntax-highlighting)
 
 function cd() {

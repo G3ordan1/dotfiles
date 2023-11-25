@@ -2,6 +2,7 @@
 ## Aliases
 ##
 
+alias hyprconfig="vim $HOME/.config/hypr/hyprland.conf"
 alias dark_scheme="gsettings set org.gnome.desktop.interface color-scheme prefer-light;gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
 alias vim="nvim"
 alias r="radian"
